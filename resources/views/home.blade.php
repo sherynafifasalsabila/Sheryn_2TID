@@ -7,6 +7,7 @@
     <title>My Laravel App</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
     <!-- Custom CSS -->
     <style>
         body {
@@ -161,6 +162,16 @@
         <div class="card-body">
             <h5 class="card-title">Form Pertanyaan</h5>
 
+            {{-- Flash Data --}}
+            @if (session('info'))
+                <div class="alert alert-info">
+                    Terimakasih <b>{{ session('info')['nama'] }}</b>!
+                    Pertanyaan ini: <b>{{ session('info')['pertanyaan'] }}</b>
+                    akan segera direspon melalui email <b>{{ session('info')['email'] }}</b>
+                </div>
+            @endif
+
+            
             @if ($errors->any())
                 <div class="alert alert-danger">
                       <ul>
